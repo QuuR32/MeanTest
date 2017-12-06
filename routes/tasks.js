@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
+var cnx = require('cnx');
 
-var uri = "mongodb://localhost:27017/test?authSource=admin";
-
-var db = mongojs(uri, ['tasks']);
+var db = mongojs(cnx.uri(false), ['tasks']);
 
 //Get All Tasks
 router.get('/tasks', function(req, res, next) {
